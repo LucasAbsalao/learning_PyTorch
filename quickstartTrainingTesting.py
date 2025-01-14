@@ -5,14 +5,14 @@ from torchvision import datasets
 from torchvision.transforms import ToTensor
 from structureNN import NeuralNetwork, establish_device
 
-training_data = datasets.MNIST(
+training_data = datasets.fashionMNIST(
     root = 'data',
     train = True,
     download = True,
     transform = ToTensor()
 )
 
-test_data = datasets.MNIST(
+test_data = datasets.fashionMNIST(
     root='data',
     train=False,
     download=True,

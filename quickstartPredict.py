@@ -100,7 +100,7 @@ with torch.no_grad():
 img = cv2.imread("shirt.jpeg", cv2.IMREAD_GRAYSCALE)
 img = treat_image(img)
 
-img = NormalizeData(np.float32(img))
+#img = NormalizeData(np.float32(img))
 
 transform = transforms.Compose([
     transforms.ToTensor()
