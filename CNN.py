@@ -27,12 +27,12 @@ trainloader = torch.utils.data.DataLoader(
 
 testset = torchvision.datasets.CIFAR10(
     root='./data',
-    batch_size=batch_size,
+    train=True,
     download=True,
     transform=transform
 )
 
-testloader = torch.utils.data.dataLoader(
+testloader = torch.utils.data.DataLoader(
     testset,
     batch_size=batch_size,
     shuffle=False,
@@ -42,4 +42,14 @@ testloader = torch.utils.data.dataLoader(
 classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
 def imshow(img):
+    img = img
     npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1,2,0)))
+    plt.show()
+
+#get training images randomly
+dataiter = iter(trainloader)
+images,labels = next(dataiter)
+
+imshow(torchvision.utils.make_grid(images))
+print(' '.join(f'{classes[labels[j]]}' for j in range(batch_size)))
